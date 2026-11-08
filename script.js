@@ -104,12 +104,11 @@ const swatch=(c,x)=>`<div class="pc" style="background:${c};color:${inkOn(c)}">$
 function renderPalettes(){
   $('#palette').innerHTML=curPal.map(c=>swatch(c)).join('');
   $('#myPalette').innerHTML=mine.length?mine.map(c=>swatch(c,1)).join(''):'<p class="hint">Belum ada warna tambahan. Ketik kode warna di atas.</p>';
-  const all=[...new Set([...curPal,...mine])];
-  $('#chips').innerHTML=all.map(c=>`<button class="chip-c" style="background:${c};color:${inkOn(c)}" data-c="${c}" aria-label="Pakai ${c}">${c}</button>`).join('')}
+}
 document.addEventListener('click',e=>{
   const r=e.target.closest('[data-rm]');if(r){mine=mine.filter(c=>c!==r.dataset.rm);renderPalettes();return}
-  const ch=e.target.closest('[data-c]');if(ch){setRole($('#applyTo').value,ch.dataset.c);toast('Warna dipakai: '+ch.dataset.c)}});
-addBox('#addBox3');addBox('#addBox5');
+});
+addBox('#addBox3');
 
 /* ---------- Modul 3: roda warna klik + harmoni ---------- */
 function harmony(hex,type){const[h,s,l]=rgb2hsl(...hex2rgb(hex));
