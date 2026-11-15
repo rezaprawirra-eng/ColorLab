@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0E0B24">
 <title>ColorLab: Belajar Teori Warna dalam Desain Grafis</title>
 <!-- Google Fonts hanya tampil jika ada internet; tanpa internet dipakai font sistem -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +34,7 @@
     <button class="icon-btn menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
     <strong class="logo">ColorLab</strong>
     <span class="spacer"></span>
+    <div class="tprog" title="Progres belajar"><div class="bar"><i id="progFill"></i></div><small id="progTxt">0/5 modul</small></div>
     <button class="icon-btn" id="themeBtn" aria-label="Ganti mode terang/gelap">◐</button>
   </header>
 
@@ -48,18 +50,20 @@
     <section class="page" id="home">
       <h2>Halo, Siswa DKV!</h2>
       <p>Kamu akan mempelajari teori warna mulai dari dasar sampai membuat konsep warna poster. Selesaikan lima modul, lalu uji dirimu lewat kuis.</p>
+      <div class="card prog"><b>Progres belajarmu</b><div class="bar big"><i id="homeFill"></i></div><small id="homeTxt">Belum ada modul selesai.</small></div>
       <div class="card"><h3>Tujuan pembelajaran</h3><ol>
         <li>Memahami prinsip-prinsip dalam merancang visual dan aplikasinya.</li>
         <li>Memahami konsep komunikator, komunikan, dan media komunikasi dalam perancangan komunikasi visual, dan penerapannya.</li></ol></div>
       <h3>Daftar modul</h3>
       <div class="grid" id="moduleCards"></div>
+      <div class="card devs"><h3>Tim pengembang</h3><ul class="devlist"><li>Aura Rahadatul Aizy</li><li>Ratu Nabila Ulfa</li><li>Reza Prawira Adijaya</li><li>Rifal Sani Pirmansyah</li></ul></div>
     </section>
 
     <!-- MODUL 1 -->
     <section class="page" id="m1" hidden>
       <h2>Modul 1: Pengenalan Teori Warna</h2>
       <div class="card"><p><b>Warna</b> dalam desain grafis adalah salah satu elemen visual yang digunakan untuk membangun identitas, suasana, perhatian, hierarki, dan makna dalam sebuah desain. Warna tidak hanya berfungsi sebagai unsur dekoratif. Pemilihan warna dapat memengaruhi bagaimana pengguna:</p>
-        <ul><li>memperhatikan suatu objek,</li><li>memahami informasi,</li><li>membedakan elemen,</li><li>mengenali identitas suatu produk,</li><li>merasakan suasana tertentu,</li><li>mengambil keputusan.</li></ul></div>
+        <ul><li>Memperhatikan suatu objek,</li><li>Memahami informasi,</li><li>Membedakan elemen,</li><li>Mengenali identitas suatu produk,</li><li>Merasakan suasana tertentu,</li><li>Mengambil keputusan.</li></ul></div>
       <h3>Warna primer, sekunder, tersier </h3>
       <div class="swatches" id="rybSw"></div>
       <p class="hint">Klik kartu untuk melihat penjelasannya.</p>
@@ -131,6 +135,10 @@
     <section class="page" id="m5" hidden>
       <h2>Modul 5: Praktik Membuat Palet Warna</h2>
       <p class="card"><b>Brief:</b> Buatlah konsep warna untuk poster promosi kegiatan kreatif siswa DKV.</p>
+      <div class="card" id="compGuide"><h3>Panduan komposisi warna 60-30-10</h3><p>Bagi luas poster menjadi tiga peran warna agar seimbang dan nyaman dilihat.</p>
+        <div class="compbar" role="img" aria-label="Bar proporsi: 60 persen dominan, 30 persen sekunder, 10 persen aksen"><span id="cbD" style="flex:60">60%</span><span id="cbS" style="flex:30">30%</span><span id="cbA" style="flex:10">10%</span></div>
+        <ul class="complegend"><li><i id="lgD"></i><span><b>60% Dominan (Latar)</b>: warna terluas yang menentukan suasana.</span></li><li><i id="lgS"></i><span><b>30% Sekunder (Dekoratif)</b>: mendukung dan mengisi bentuk.</span></li><li><i id="lgA"></i><span><b>10% Aksen (Judul)</b>: menarik perhatian ke hal terpenting.</span></li></ul>
+        <p class="hint">Bar ini mengikuti warna poster yang kamu pilih di bawah.</p></div>
       <div class="studio">
         <div class="controls card">
           <label>Tema warna <select id="theme"><option value="0">Ceria kreatif</option><option value="1">Profesional teknologi</option><option value="2">Hangat festival</option><option value="3">Neon malam</option></select></label>
@@ -145,7 +153,6 @@
           <div class="crow"><span>Teks</span><input type="color" id="cText" aria-label="Warna teks"><input class="hex" id="hText" maxlength="7" placeholder="#RRGGBB" aria-label="Kode warna teks"></div>
           <div class="crow"><span>Dekoratif</span><input type="color" id="cAcc" aria-label="Warna elemen dekoratif"><input class="hex" id="hAcc" maxlength="7" placeholder="#RRGGBB" aria-label="Kode warna dekoratif"></div>
           <p id="contrast" aria-live="polite"></p>
-          <div id="addBox5" class="addbox"></div>
           <div class="row"><button class="btn small" id="dlBtn">Unduh PNG</button><button class="btn small ghost" id="resetBtn">Reset</button></div>
         </div>
         <div class="posterwrap"><svg id="poster" viewBox="0 0 600 800" role="img" aria-label="Pratinjau poster"></svg></div>
@@ -158,6 +165,7 @@
       <div class="card quizcta">
         <h3>Uji pemahamanmu</h3>
         <p>Kamu sudah melewati lima modul. Kerjakan kuis evaluasi untuk mengecek seberapa jauh kamu memahami teori warna.</p>
+        <!-- GURU: ganti href di bawah dengan tautan kuis Wordwall/Wayground milik Anda -->
         <a class="btn big" id="quizLink" href="https://wayground.com/join?gc=65187105" target="_blank" rel="noopener">Buka kuis</a>
       </div>
     </section>
